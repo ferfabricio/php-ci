@@ -1,19 +1,22 @@
 FROM php:7.4
 
+LABEL maintainer="ferfabricio@gmail.com"
+
+
 RUN apt-get update \
-    && apt-get install -y gnupg libcurl4-openssl-dev sudo git libxslt-dev zlib1g-dev graphviz zip libmcrypt-dev libicu-dev g++ libpcre3-dev libgd-dev libfreetype6-dev libpq-dev sqlite curl build-essential unzip gcc make autoconf libc-dev libzip-dev libonig-dev pkg-config \
+    && apt-get install -y autoconf build-essential curl g++ gcc git gnupg graphviz libc-dev libcurl4-openssl-dev libfreetype6-dev libgd-dev libicu-dev libmcrypt-dev libonig-dev libpcre3-dev libpq-dev libxslt-dev libzip-dev make pkg-config sqlite sudo unzip zip zlib1g-dev \
     && apt-get clean \
-    && docker-php-ext-install soap \
-    && docker-php-ext-install zip \
-    && docker-php-ext-install xsl \
-    && docker-php-ext-install mbstring \
-    && docker-php-ext-install gettext \
     && docker-php-ext-install curl \
+    && docker-php-ext-install gettext \
+    && docker-php-ext-install intl \
+    && docker-php-ext-install json \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-install opcache \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_pgsql \
-    && docker-php-ext-install json \
-    && docker-php-ext-install intl \
-    && docker-php-ext-install opcache
+    && docker-php-ext-install soap \
+    && docker-php-ext-install xsl \
+    && docker-php-ext-install zip
 
 # install gd
 RUN docker-php-ext-configure gd \
