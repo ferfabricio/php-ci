@@ -1,7 +1,7 @@
 FROM php:7.4
 
 RUN apt-get update \
-    && apt-get install -y gnupg libcurl4-openssl-dev sudo git libxslt-dev zlib1g-dev graphviz zip libmcrypt-dev libicu-dev g++ libpcre3-dev libgd-dev libfreetype6-dev sqlite curl build-essential unzip gcc make autoconf libc-dev libzip-dev libonig-dev pkg-config \
+    && apt-get install -y gnupg libcurl4-openssl-dev sudo git libxslt-dev zlib1g-dev graphviz zip libmcrypt-dev libicu-dev g++ libpcre3-dev libgd-dev libfreetype6-dev libpq-dev sqlite curl build-essential unzip gcc make autoconf libc-dev libzip-dev libonig-dev pkg-config \
     && apt-get clean \
     && docker-php-ext-install soap \
     && docker-php-ext-install zip \
@@ -10,6 +10,7 @@ RUN apt-get update \
     && docker-php-ext-install gettext \
     && docker-php-ext-install curl \
     && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install json \
     && docker-php-ext-install intl \
     && docker-php-ext-install opcache
