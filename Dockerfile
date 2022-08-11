@@ -6,6 +6,7 @@ LABEL maintainer="ferfabricio@gmail.com"
 RUN apt-get update \
     && apt-get install -y autoconf build-essential curl g++ gcc git gnupg graphviz libc-dev libcurl4-openssl-dev libfreetype6-dev libgd-dev libicu-dev libmcrypt-dev libonig-dev libpcre3-dev libpq-dev libxslt-dev libzip-dev make pkg-config sqlite sudo unzip zip zlib1g-dev \
     && apt-get clean \
+    && docker-php-ext-install calendar \
     && docker-php-ext-install curl \
     && docker-php-ext-install gettext \
     && docker-php-ext-install intl \
