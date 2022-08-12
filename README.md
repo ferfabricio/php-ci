@@ -1,6 +1,11 @@
 # php-ci
 
-Docker image for CI porpuse
+Docker image for CI purpose
+
+## Versions
+
+- ferfabricio/php-ci:php-7.4
+- ferfabricio/php-ci:php-8.0
 
 ## Extensions
 
