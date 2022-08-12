@@ -4,11 +4,40 @@ LABEL maintainer="ferfabricio@gmail.com"
 
 
 RUN apt-get update \
-    && apt-get install -y autoconf build-essential curl g++ gcc git gnupg graphviz libc-dev libcurl4-openssl-dev libfreetype6-dev libgd-dev libicu-dev libmcrypt-dev libonig-dev libpcre3-dev libpq-dev libxslt-dev libzip-dev make pkg-config sqlite sudo unzip zip zlib1g-dev \
+    && apt-get install -y \
+        autoconf \
+        build-essential \
+        curl \
+        g++ \
+        gcc \
+        git \
+        gnupg \
+        graphviz \
+        libc-dev \
+        libcurl4-openssl-dev \
+        libfreetype6-dev \
+        libgd-dev \
+        libgmp-dev \
+        libicu-dev \
+        libmcrypt-dev \
+        libonig-dev \
+        libpcre3-dev \
+        libpq-dev \
+        libsqlite3-dev \
+        libxslt-dev \
+        libzip-dev \
+        make \
+        pkg-config \
+        sqlite3 \
+        sudo \
+        unzip \
+        zip \
+        zlib1g-dev \
     && apt-get clean \
     && docker-php-ext-install calendar \
     && docker-php-ext-install curl \
     && docker-php-ext-install gettext \
+    && docker-php-ext-install gmp \
     && docker-php-ext-install intl \
     && docker-php-ext-install json \
     && docker-php-ext-install mbstring \
@@ -17,7 +46,9 @@ RUN apt-get update \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install soap \
     && docker-php-ext-install xsl \
-    && docker-php-ext-install zip
+    && docker-php-ext-install zip \
+    && docker-php-ext-enable calendar \
+    && docker-php-ext-enable gmp
 
 # install gd
 RUN docker-php-ext-configure gd \

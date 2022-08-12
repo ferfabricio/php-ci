@@ -4,6 +4,7 @@ Docker image for CI porpuse
 
 ## Extensions
 
+- calendar
 - curl
 - gd
 - gettext
@@ -22,4 +23,3 @@ Docker image for CI porpuse
 ## Additional
 
 - Composer
-- Xdebug
