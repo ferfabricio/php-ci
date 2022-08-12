@@ -28,3 +28,7 @@ Docker image for CI purpose
 ## Additional
 
 - Composer
+
+## Support
+
+In the version 2 was added support for multiple architecture.

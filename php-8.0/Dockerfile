@@ -1,5 +1,7 @@
 FROM php:8.0
 
+LABEL maintainer="ferfabricio@gmail.com"
+
 RUN apt-get update && apt-get install -y \
 		ca-certificates \
 		curl \
@@ -56,9 +58,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 #Install xdebug
 RUN pecl install xdebug-3.1.5 && docker-php-ext-enable xdebug
 
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
-
-USER www
+RUN echo "memory_limit = -1;" > $PHP_INI_DIR/conf.d/memory_limit.ini
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
