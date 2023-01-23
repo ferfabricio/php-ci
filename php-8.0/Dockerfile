@@ -3,38 +3,39 @@ FROM php:8.0
 LABEL maintainer="ferfabricio@gmail.com"
 
 RUN apt-get update && apt-get install -y \
-		ca-certificates \
-		curl \
-		libbz2-dev \
-		libcurl4-gnutls-dev \
-		libgmp-dev \
-		libpng++-dev \
-		libpq-dev \
-		libsqlite3-dev \
-		libxml2-dev \
-		re2c \
-		sqlite3	\
-        file \
-        git \
-        graphviz \
-        libexif-dev \
-        libgd-dev \
-        libjpeg-dev \
-        libjpeg62-turbo-dev \
-        libmagic-dev \
-        libmcrypt-dev \
-        libonig-dev \
-        libpng-dev \
-        libssh2-1-dev \
-        libssl-dev \
-        libtidy-dev \
-        libvpx-dev \
-        libxml2-dev \
-        libxslt1-dev \
-        libzip-dev \
-        wget \
-        zlib1g-dev \
-        wkhtmltopdf
+    ca-certificates \
+    curl \
+    file \
+    git \
+    graphviz \
+    libbz2-dev \
+    libcurl4-gnutls-dev \
+    libexif-dev \
+    libgd-dev \
+    libgmp-dev \
+    libjpeg-dev \
+    libjpeg62-turbo-dev \
+    libmagic-dev \
+    libmcrypt-dev \
+    libonig-dev \
+    libpng-dev \
+    libpng++-dev \
+    libpq-dev \
+    libsqlite3-dev \
+    libssh2-1-dev \
+    libssl-dev \
+    libtidy-dev \
+    libvpx-dev \
+    libxml2-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    libzip-dev \
+    protobuf-compiler \
+    re2c \
+    sqlite3	\
+    wget \
+    wkhtmltopdf \
+    zlib1g-dev
 
 RUN docker-php-ext-install bcmath \
     && docker-php-ext-install bz2 \
@@ -54,6 +55,9 @@ RUN docker-php-ext-install bcmath \
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install grpc
+RUN pecl install grpc && docker-php-ext-enable grpc
 
 #Install xdebug
 RUN pecl install xdebug-3.1.5 && docker-php-ext-enable xdebug
